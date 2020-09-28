@@ -2,10 +2,11 @@ extern crate proc_macro;
 
 use proc_macro::TokenStream;
 
+use syn::{DeriveInput, parse_macro_input};
+
 #[proc_macro_derive(Builder)]
 pub fn derive(input: TokenStream) -> TokenStream {
-    println!("{:#?}", input);
+    let syntax_tree = parse_macro_input!(input as DeriveInput);
 
     TokenStream::default()
-    //unimplemented!()
 }
