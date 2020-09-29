@@ -3,9 +3,9 @@ extern crate proc_macro;
 use proc_macro::TokenStream;
 
 use quote::quote;
-use syn::{DeriveInput, parse_macro_input};
 use syn::export::quote::__private::Ident;
 use syn::spanned::Spanned;
+use syn::{parse_macro_input, DeriveInput};
 
 #[proc_macro_derive(Builder)]
 pub fn derive(input: TokenStream) -> TokenStream {
@@ -15,7 +15,6 @@ pub fn derive(input: TokenStream) -> TokenStream {
     let struct_name = &ast.ident;
     let b_name = builder_name(struct_name);
     let b_ident = Ident::new(&b_name, ast.span());
-
 
     let exp = quote! {
 
